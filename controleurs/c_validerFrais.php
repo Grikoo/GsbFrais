@@ -43,6 +43,14 @@ switch($action){
             }
             $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idvisiteur,$date);
             $lesFraisForfait= $pdo->getLesFraisForfait($idvisiteur,$date);
+            $somme = 0;
+            foreach ($lesFraisForfait as $lesfrais){
+                $somme += $lesfrais['quantite'] * $lesfrais['montant'];
+            }
+            foreach ($lesFraisHorsForfait as $lesfraishors){
+                $somme += $lesfraishors['montant'];
+            }
+            $pdo->majMontant($somme, $idVisiteur, $leMois);
             include("vues/v_FicheCL.php");
         }else{
             $lesfichesfraispaiement =$pdo->getVisiteurCL();

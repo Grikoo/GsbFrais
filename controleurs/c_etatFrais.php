@@ -20,14 +20,14 @@ switch($action){
 		include("vues/v_listeMois.php");
 		$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur,$leMois);
 		$lesFraisForfait= $pdo->getLesFraisForfait($idVisiteur,$leMois);
-                $somme = 0;
-                foreach ($lesFraisForfait as $lesfrais){
-                    $somme += $lesfrais['quantite'] * $lesfrais['montant'];
-                }
-                foreach ($lesFraisHorsForfait as $lesfraishors){
-                    $somme += $lesfraishors['montant'];
-                }
-                $pdo->majMontant($somme, $idVisiteur, $leMois);
+        $somme = 0;
+		foreach ($lesFraisForfait as $lesfrais){
+			$somme += $lesfrais['quantite'] * $lesfrais['montant'];
+		}
+		foreach ($lesFraisHorsForfait as $lesfraishors){
+			$somme += $lesfraishors['montant'];
+		}
+        $pdo->majMontant($somme, $idVisiteur, $leMois);
 		$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur,$leMois);
 		$numAnnee =substr( $leMois,0,4);
 		$numMois =substr( $leMois,4,2);
