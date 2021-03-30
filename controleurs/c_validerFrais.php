@@ -50,7 +50,7 @@ switch($action){
             foreach ($lesFraisHorsForfait as $lesfraishors){
                 $somme += $lesfraishors['montant'];
             }
-            $pdo->majMontant($somme, $idVisiteur, $leMois);
+            $pdo->majMontant($somme, $idVisiteur, $date);
             include("vues/v_FicheCL.php");
         }else{
             $lesfichesfraispaiement =$pdo->getVisiteurCL();
@@ -88,7 +88,7 @@ switch($action){
                     $numAnnee = strval($numAnnee);
                 }
                 $ddate = strval($numAnnee).$numMois;
-                deplacerFraisHorsForfait($idFrais, $ddate);
+                $pdo->deplacerFraisHorsForfait($idFrais, $ddate);
 		break;
         }
     case 'Validerfrais':{
