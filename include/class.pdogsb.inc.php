@@ -340,21 +340,21 @@ class PdoGsb{
         }
         
         public function getVisiteurCL(){
-            $req = "select Visiteur.id as id,concat(Visiteur.nom,' ',Visiteur.prenom) as nomcomplet, FicheFrais.idEtat from Visiteur INNER JOIN FicheFrais ON idVisiteur = Visiteur.id where FicheFrais.idEtat='CL'";
+            $req = "select DISTINCT Visiteur.id as id,concat(Visiteur.nom,' ',Visiteur.prenom) as nomcomplet, FicheFrais.idEtat from Visiteur INNER JOIN FicheFrais ON idVisiteur = Visiteur.id where FicheFrais.idEtat='CL'";
             $res = PdoGsb::$monPdo->query($req);
 		$lesLignes = $res->fetchAll(pdo::FETCH_ASSOC);
 		return $lesLignes;
         }
         
         public function getVisiteurRB(){
-            $req = "select Visiteur.id as id,concat(Visiteur.nom,' ',Visiteur.prenom) as nomcomplet, FicheFrais.idEtat from Visiteur INNER JOIN FicheFrais ON idVisiteur = Visiteur.id where FicheFrais.idEtat='RB'";
+            $req = "select DISTINCT Visiteur.id as id,concat(Visiteur.nom,' ',Visiteur.prenom) as nomcomplet, FicheFrais.idEtat from Visiteur INNER JOIN FicheFrais ON idVisiteur = Visiteur.id where FicheFrais.idEtat='RB'";
             $res = PdoGsb::$monPdo->query($req);
 		$lesLignes = $res->fetchAll(pdo::FETCH_ASSOC);
 		return $lesLignes;
         }
         
         public function getVisiteurVA(){
-            $req = "select Visiteur.id as id,concat(Visiteur.nom,' ',Visiteur.prenom) as nomcomplet, FicheFrais.idEtat from Visiteur INNER JOIN FicheFrais ON idVisiteur = Visiteur.id where FicheFrais.idEtat='VA'";
+            $req = "select DISTINCT Visiteur.id as id,concat(Visiteur.nom,' ',Visiteur.prenom) as nomcomplet, FicheFrais.idEtat from Visiteur INNER JOIN FicheFrais ON idVisiteur = Visiteur.id where FicheFrais.idEtat='VA'";
             $res = PdoGsb::$monPdo->query($req);
 		$lesLignes = $res->fetchAll(pdo::FETCH_ASSOC);
 		return $lesLignes;
